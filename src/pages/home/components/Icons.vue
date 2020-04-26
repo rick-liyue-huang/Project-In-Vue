@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
@@ -17,70 +17,77 @@
 /* eslint-disable */
 export default {
   name: "HomeIcons",
+  props: {
+    list: Array
+  },
   data: function() {
     return {
-      iconList: [
-        {
-          id: "0001",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          desc: "one"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-          desc: "two"
-        },
-        {
-          id: "0003",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png",
-          desc: "three"
-        },
-        {
-          id: "0004",
-          imgUrl:
-            "https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png",
-          desc: "four"
-        },
-        {
-          id: "0005",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
-          desc: "five"
-        },
-        {
-          id: "0006",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",
-          desc: "six"
-        },
-        {
-          id: "0007",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png",
-          desc: "seven"
-        },
-        {
-          id: "0008",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-          desc: "eight"
-        },
-        {
-          id: "0009",
-          imgUrl:
-            "https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
-          desc: "nine"
-        }
-      ]
+      // 防止自动滚动
+      swiperOption: {
+        autoplay: false
+      }
+      // iconList: [
+      //   {
+      //     id: "0001",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
+      //     desc: "one"
+      //   },
+      //   {
+      //     id: "0002",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
+      //     desc: "two"
+      //   },
+      //   {
+      //     id: "0003",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png",
+      //     desc: "three"
+      //   },
+      //   {
+      //     id: "0004",
+      //     imgUrl:
+      //       "https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png",
+      //     desc: "four"
+      //   },
+      //   {
+      //     id: "0005",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
+      //     desc: "five"
+      //   },
+      //   {
+      //     id: "0006",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png",
+      //     desc: "six"
+      //   },
+      //   {
+      //     id: "0007",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png",
+      //     desc: "seven"
+      //   },
+      //   {
+      //     id: "0008",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
+      //     desc: "eight"
+      //   },
+      //   {
+      //     id: "0009",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
+      //     desc: "nine"
+      //   }
+      // ]
     };
   },
   computed: {
     pages: function() {
       const pages = [];
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8);
         console.log("page: ----", page);
         if (!pages[page]) {

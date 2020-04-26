@@ -8,7 +8,7 @@
       please input...
     </div>
     <div class="header-right">
-      city
+      {{ this.city }}
       <span class="iconfont arrow-icon">&#xe6aa;</span>
     </div>
   </div>
@@ -17,7 +17,10 @@
 <script>
 /* eslint-disable */ // 将 Home 里面的组件都放到这里
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
+  props: {
+    city: String
+  }
 };
 </script>
 

@@ -3,11 +3,7 @@
     <div class="title">recommend title</div>
     <ul>
       <!-- 因为引入了一像素的边框 -->
-      <li
-        class="item border-bottom"
-        v-for="item of recommendList"
-        :key="item.id"
-      >
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
         <img :src="item.imgUrl" alt="" class="item-image" />
         <div class="item-info">
           <p class="item-title">{{ item.title }}</p>
@@ -23,31 +19,34 @@
 /* eslint-disable */
 export default {
   name: "HomeRecommend",
+  props: {
+    list: Array
+  },
   data: function() {
     return {
-      recommendList: [
-        {
-          id: "0001",
-          imgUrl:
-            "https://imgs.qunarzz.com/sight/p0/1704/b5/b5ff021abb27e19da3.img.jpg_200x200_1c184696.jpg",
-          title: "哈尔滨北方森林动物园",
-          desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
-        },
-        {
-          id: "0002",
-          imgUrl:
-            "https://imgs.qunarzz.com/sight/p0/1412/89/f92a6d44a1e9a92a307c991bc5cf1ba7.water.jpg_200x200_fdc2fb80.jpg",
-          title: "东北虎林园",
-          desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
-        },
-        {
-          id: "0003",
-          imgUrl:
-            "https://imgs.qunarzz.com/sight/p0/1609/8d/8d7623bfa134815ca3.water.jpg_200x200_17279330.jpg",
-          title: "哈尔滨香炉山",
-          desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
-        }
-      ]
+      // recommendList: [
+      //   {
+      //     id: "0001",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/sight/p0/1704/b5/b5ff021abb27e19da3.img.jpg_200x200_1c184696.jpg",
+      //     title: "哈尔滨北方森林动物园",
+      //     desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
+      //   },
+      //   {
+      //     id: "0002",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/sight/p0/1412/89/f92a6d44a1e9a92a307c991bc5cf1ba7.water.jpg_200x200_fdc2fb80.jpg",
+      //     title: "东北虎林园",
+      //     desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
+      //   },
+      //   {
+      //     id: "0003",
+      //     imgUrl:
+      //       "https://imgs.qunarzz.com/sight/p0/1609/8d/8d7623bfa134815ca3.water.jpg_200x200_17279330.jpg",
+      //     title: "哈尔滨香炉山",
+      //     desc: "黑龙江省哈尔滨市阿城区哈牡公路鸽子洞地区"
+      //   }
+      // ]
     };
   }
 };

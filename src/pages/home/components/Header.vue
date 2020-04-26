@@ -1,5 +1,3 @@
-// 将 Home 里面的组件都放到这里
-
 <template>
   <div class="header">
     <div class="header-left">
@@ -17,6 +15,7 @@
 </template>
 
 <script>
+/* eslint-disable */ // 将 Home 里面的组件都放到这里
 export default {
   name: "HomeHeader"
 };

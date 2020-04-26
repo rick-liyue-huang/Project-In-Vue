@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from "vue";
 import Router from "vue-router";
 // @表示 src目录

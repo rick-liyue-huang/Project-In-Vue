@@ -12,7 +12,9 @@
     </swiper>
   </div>
 </template>
+
 <script>
+/* eslint-disable */
 export default {
   name: "HomeIcons",
   data: function() {
@@ -80,6 +82,7 @@ export default {
       const pages = [];
       this.iconList.forEach((item, index) => {
         const page = Math.floor(index / 8);
+        console.log("page: ----", page);
         if (!pages[page]) {
           pages[page] = [];
         }
@@ -99,42 +102,35 @@ export default {
   height: 0
   padding-bottom: 50%
   overflow hidden
-.icon
-  position relative
-  width: 25%
-  height: 0
-  float: left
-  padding-bottom: 25%
-  overflow hidden
-  .icon-img
-    position: absolute
-    left: 0
-    right: 0
-    top: 0
-    bottom: .44rem
-    box-sizing: border-box
-    padding: .1rem
-    .icon-img-content
-      height: 100%
-      display: block
-      margin: 0 auto
-  .icon-desc
-    position absolute
-    left: 0
-    right: 0
-    bottom: 0
-    line-height: .44rem
-    height: .44rem
-    color: $darkTextColor
-    text-align: center
-    ellipsis()
+.icons
+  margin-top: .1rem
+  .icon
+    position relative
+    width: 25%
+    height: 0
+    float: left
+    padding-bottom: 25%
+    overflow hidden
+    .icon-img
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: .44rem
+      box-sizing: border-box
+      padding: .1rem
+      .icon-img-content
+        height: 100%
+        display: block
+        margin: 0 auto
+    .icon-desc
+      position absolute
+      left: 0
+      right: 0
+      bottom: 0
+      line-height: .44rem
+      height: .44rem
+      color: $darkTextColor
+      text-align: center
+      ellipsis()
 </style>
-
-https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png
-https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png
-https://imgs.qunarzz.com/piao/fusion/1803/bd/9f7b9b2b60c1502.png
-https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png
-https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png
-https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png
-https://imgs.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png
-https://imgs.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png

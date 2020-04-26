@@ -1,6 +1,3 @@
-// 单页面组件
-
-// 模板
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png" /> -->
@@ -10,13 +7,13 @@
   </div>
 </template>
 
-// 逻辑
 <script>
+/* eslint-disable */
+// 单页面组件 /* eslint-disable */ // 模板
 export default {
   name: "App"
 };
 </script>
 
 // 样式
-<style>
-</style>
+<style></style>

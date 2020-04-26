@@ -4,10 +4,12 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 // 在入口文件引入 全局css 样式
-import "./assets/styles/reset.css";
+import "@/assets/styles/reset.css";
 // 手机 1像素边框问题
-import "./assets/styles/border.css";
+import "@/assets/styles/border.css";
 import fastClick from "fastclick";
+// iconfont 引入
+import "@/assets/styles/iconfont.css";
 
 Vue.config.productionTip = false;
 // 引入 fastclick 解决 移动端 点击 事件 延迟 300ms问题

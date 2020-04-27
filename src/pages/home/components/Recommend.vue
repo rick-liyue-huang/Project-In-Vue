@@ -3,14 +3,22 @@
     <div class="title">recommend title</div>
     <ul>
       <!-- 因为引入了一像素的边框 -->
-      <li class="item border-bottom" v-for="item of list" :key="item.id">
+      <!-- 将 li标签 变为 router-link a 标签 -->
+      <!-- 并且实现 路由参数传递 -->
+      <router-link
+        tag="li"
+        class="item border-bottom"
+        v-for="item of list"
+        :key="item.id"
+        :to="'/detail/' + item.id"
+      >
         <img :src="item.imgUrl" alt="" class="item-image" />
         <div class="item-info">
           <p class="item-title">{{ item.title }}</p>
           <p class="item-desc">{{ item.desc }}</p>
           <button class="item-button">Detail</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>

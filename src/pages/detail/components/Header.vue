@@ -28,7 +28,12 @@ export default {
     handleScroll: function() {
       // console.log("scroll"); // 这个scroll 对 home组件也有影响
       console.log(document.documentElement.scrollTop);
-      const top = document.documentElement.scrollTop;
+      // 处理手机浏览器兼容
+      const top =
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        window.pageYOffset;
+
       if (top > 60) {
         let opacity = top / 140;
         opacity = opacity > 1 ? 1 : opacity;
@@ -41,14 +46,23 @@ export default {
       }
     }
   },
-  activated: function() {
+  // activated: function() {
+  //   // 因为使用了 keep-alive组件
+  //   // 这是 全局事件 需要 解绑
+  //   window.addEventListener("scroll", this.handleScroll);
+  // },
+  // 就在这里解绑！！！！！！！！！！！必须解绑
+  // deactivated: function() {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // }
+  // 因为使用了 exclude="detail" 所以不能使用 activated deactivated, 需要换成 mounted
+  mounted: function() {
     // 因为使用了 keep-alive组件
     // 这是 全局事件 需要 解绑
     window.addEventListener("scroll", this.handleScroll);
   },
-  // 就在这里解绑！！！！！！！！！！！必须解绑
-  deactivated: function() {
-    window.removeEventListener("scroll", this.handleScroll);
+  destroyed: function() {
+    indow.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>

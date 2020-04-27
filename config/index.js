@@ -5,16 +5,21 @@
 const path = require("path");
 
 module.exports = {
+  // 在开发环境下
   dev: {
     // Paths
     assetsSubDirectory: "static",
     assetsPublicPath: "/",
     // 处理转发代理, 实际是 webpack-dev-server 提供的
+
+    // vue项目的前后端联调就在这里配置
     proxyTable: {
       "/api": {
-        target: "http://localhost:8080",
+        // target: "http://localhost:8080",
+        target: "http://localhost:8888",
         pathRewrite: {
-          "^/api": "/static/mock"
+          // "^/api": "/static/mock"
+          "^/api": "/api"
         }
       }
     },
@@ -57,7 +62,10 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, "../dist"),
     assetsSubDirectory: "static",
-    assetsPublicPath: "/",
+    // assetsPublicPath: "/",
+
+    // 将打包文件放入到 project1文件夹里面
+    assetsPublicPath: "/project1",
 
     /**
      * Source Maps

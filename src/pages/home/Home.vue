@@ -26,8 +26,9 @@ import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
+    // 组件之间也可以异步加载
     HomeHeader, // 对应 home-header
-    HomeSwiper,
+    HomeSwiper: () => import("./components/Swiper"),
     HomeIcons,
     HomeRecommend,
     HomeWeekend

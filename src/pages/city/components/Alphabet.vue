@@ -1,12 +1,13 @@
 <template>
   <ul class="list">
+    <!-- .prevent 在手机测试时候发现的问题 -->
     <li
       :ref="item"
       class="item"
       v-for="item of letters"
       :key="item"
       @click="handleLetterClick"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
     >

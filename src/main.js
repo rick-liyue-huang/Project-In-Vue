@@ -8,6 +8,8 @@ import Vue from "vue";
 // 全局引入 swiper 库
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import store from "./store"; // 引入 store from vuex
+// 兼容有些浏览器不支持promise
+import "babel-polyfill";
 import App from "./App";
 import router from "./router";
 // 在入口文件引入 全局css 样式

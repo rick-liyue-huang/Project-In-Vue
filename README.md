@@ -15,3 +15,23 @@ git checkout master
 git merge origin/index-swiper
 git push origin master
 ```
+
+真机联调 可以在手机上做测试
+
+```
+ifconfig
+"dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
+
+npm i babel-polyfill --save --registry=https://registry.npm.taobao.org
+```
+
+打包上线
+
+```
+npm run build
+assetsPublicPath: "/project1"
+```
+
+异步加载 处理 router/index.js
+根据文件大小 需要平衡
+`component: () => import("@/pages/home/Home")`

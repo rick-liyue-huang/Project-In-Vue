@@ -25,5 +25,9 @@ export default new Router({
       name: "Detail",
       component: Detail
     }
-  ]
+  ],
+  // 每次路由切换的时候让页面回到最顶部，防止页面联动的时候位置相互影响
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });

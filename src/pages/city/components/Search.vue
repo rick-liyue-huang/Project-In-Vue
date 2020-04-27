@@ -30,6 +30,7 @@
 <script>
 /* eslint-disable */
 import Bscroll from "better-scroll";
+import { mapMutations } from "vuex";
 export default {
   name: "CitySearch",
   data: function() {
@@ -79,10 +80,15 @@ export default {
       // store dispatch
       // this.$store.dispatch("changeCity", city); // 可以不需要action来处理state
       // 可以通过 commit 也就是 mutations 来处理 state
-      this.$store.commit("changeCity", city);
+      // this.$store.commit("changeCity", city);
+
+      // 因为通过 mapMutations 处理过了，因此可以直接使用方法
+      this.changeCity(city);
       // 利用编程式导航来处理路由跳转
       this.$router.push("/"); // 跳转到首页
-    }
+    },
+    // 同理 和 List.vue一样， 先引用然后需要展开定义方法
+    ...mapMutations(["changeCity"])
   },
   mounted: function() {
     this.scroll = new Bscroll(this.$refs["search"]); // 为了滚动

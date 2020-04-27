@@ -7,7 +7,8 @@
         <div class="button-list">
           <div class="button-wrapper">
             <!-- <div class="button">北京</div> -->
-            <div class="button">{{ this.$store.state.city }}</div>
+            <!-- <div class="button">{{ this.$store.state.city }}</div> -->
+            <div class="button">{{ this.currentCity }}</div>
           </div>
         </div>
       </div>
@@ -44,6 +45,7 @@
 <script>
 /* eslint-disable */
 import Bscroll from "better-scroll";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "CityList",
@@ -52,6 +54,12 @@ export default {
     cities: Object,
     letter: String
   },
+  computed: {
+    // mapState是指把vuex里面的city数据映射到这个组件的计算属性currentCity里
+    ...mapState({
+      currentCity: "city"
+    })
+  },
   methods: {
     handleCityClick: function(city) {
       // alert(city);
@@ -59,9 +67,14 @@ export default {
       // this.$store.dispatch("changeCity", city); // 可以不需要action来处理state
       // 可以通过 commit 也就是 mutations 来处理 state
       this.$store.commit("changeCity", city);
+
+      // 因为通过 mapMutations 处理过了，因此可以直接使用方法
+      this.changeCity(city);
       // 利用编程式导航来处理路由跳转
       this.$router.push("/"); // 跳转到首页
-    }
+    },
+    // 有一个mutation叫做 changeCity, 将它转为一个方法叫做 changeCity
+    ...mapMutations(["changeCity"])
   },
   watch: {
     letter: function() {

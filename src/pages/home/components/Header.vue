@@ -11,7 +11,9 @@
     <router-link to="/city">
       <div class="header-right">
         <!-- {{ this.city }} -->
-        {{ this.$store.state.city }}
+        <!-- {{ this.$store.state.city }} -->
+        <!-- {{ this.city }} -->
+        {{ this.doubleCity }}
         <span class="iconfont arrow-icon">&#xe6aa;</span>
       </div>
     </router-link>
@@ -20,11 +22,17 @@
 
 <script>
 /* eslint-disable */ // 将 Home 里面的组件都放到这里
+import { mapState, mapGetters } from "vuex";
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
   // props: {
   //   city: String
   // }
+  computed: {
+    // mapState是指把vuex里面的city数据映射到这个组件的计算属性city里
+    ...mapState(["city"]),
+    ...mapGetters(["doubleCity"])
+  }
 };
 </script>
 
@@ -62,7 +70,8 @@ export default {
   }
 
   .header-right {
-    width: 1.24rem;
+    min-width: 1.04rem;
+    padding: 0 .1rem;
     float: right;
     text-align: center;
     color: #fff;

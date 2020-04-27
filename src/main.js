@@ -5,6 +5,7 @@ import Vue from "vue";
 import fastClick from "fastclick";
 // 全局引入 swiper 库
 import VueAwesomeSwiper from "vue-awesome-swiper";
+import store from "./store"; // 引入 store from vuex
 import App from "./App";
 import router from "./router";
 // 在入口文件引入 全局css 样式
@@ -27,6 +28,7 @@ new Vue({
   // 对应 index.html 挂载点
   el: "#app",
   router, // 使用了 router，相当于注册
+  store, // 使用 store
   components: { App },
   template: "<App/>"
 });

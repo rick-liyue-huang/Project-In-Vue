@@ -15,6 +15,7 @@
           class="search-item border-bottom"
           v-for="item of list"
           :key="item.id"
+          @click="handleCityClick(item.name)"
         >
           {{ item.name }}
         </li>
@@ -70,6 +71,17 @@ export default {
         }
         this.list = result;
       }, 100);
+    }
+  },
+  methods: {
+    handleCityClick: function(city) {
+      // alert(city);
+      // store dispatch
+      // this.$store.dispatch("changeCity", city); // 可以不需要action来处理state
+      // 可以通过 commit 也就是 mutations 来处理 state
+      this.$store.commit("changeCity", city);
+      // 利用编程式导航来处理路由跳转
+      this.$router.push("/"); // 跳转到首页
     }
   },
   mounted: function() {

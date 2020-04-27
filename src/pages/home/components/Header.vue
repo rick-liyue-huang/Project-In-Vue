@@ -10,7 +10,8 @@
     <!-- 路由跳转就使用 router-link -->
     <router-link to="/city">
       <div class="header-right">
-        {{ this.city }}
+        <!-- {{ this.city }} -->
+        {{ this.$store.state.city }}
         <span class="iconfont arrow-icon">&#xe6aa;</span>
       </div>
     </router-link>
@@ -20,13 +21,12 @@
 <script>
 /* eslint-disable */ // 将 Home 里面的组件都放到这里
 export default {
-  name: "HomeHeader",
-  props: {
-    city: String
-  }
+  name: "HomeHeader"
+  // props: {
+  //   city: String
+  // }
 };
 </script>
-
 
 <style lang="stylus" scoped>
 // css文件样式引用需要用 @import, 并且 引用路径 ~@ 因为有些样式需要全局使用，
@@ -74,7 +74,6 @@ export default {
   }
 }
 </style>
-
 
 // 用 stylus 写样式， 并且需要 只是对当前组件有效 scoped // 1rem = html
 font-size = 50px, 因此 43px = 0.86rem

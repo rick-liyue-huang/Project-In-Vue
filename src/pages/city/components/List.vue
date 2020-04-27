@@ -6,14 +6,20 @@
         <div class="title border-topbottom">Current</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <!-- <div class="button">北京</div> -->
+            <div class="button">{{ this.$store.state.city }}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title">Hot</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCs" :key="item.id">
+          <div
+            class="button-wrapper"
+            v-for="item of hotCs"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -25,6 +31,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)"
           >
             {{ innerItem.name }}
           </div>
@@ -45,9 +52,16 @@ export default {
     cities: Object,
     letter: String
   },
-  mounted: function() {
-    // 使用 better-scroll 可以实现上下拉动， 但是需要设置 overflow:hidden
-    this.scroll = new Bscroll(this.$refs.wrapper);
+  methods: {
+    handleCityClick: function(city) {
+      // alert(city);
+      // store dispatch
+      // this.$store.dispatch("changeCity", city); // 可以不需要action来处理state
+      // 可以通过 commit 也就是 mutations 来处理 state
+      this.$store.commit("changeCity", city);
+      // 利用编程式导航来处理路由跳转
+      this.$router.push("/"); // 跳转到首页
+    }
   },
   watch: {
     letter: function() {
@@ -59,6 +73,10 @@ export default {
         this.scroll.scrollToElement(element);
       }
     }
+  },
+  mounted: function() {
+    // 使用 better-scroll 可以实现上下拉动， 但是需要设置 overflow:hidden
+    this.scroll = new Bscroll(this.$refs.wrapper);
   }
 };
 </script>

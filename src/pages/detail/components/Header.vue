@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     handleScroll: function() {
+      // console.log("scroll"); // 这个scroll 对 home组件也有影响
       console.log(document.documentElement.scrollTop);
       const top = document.documentElement.scrollTop;
       if (top > 60) {
@@ -42,7 +43,12 @@ export default {
   },
   activated: function() {
     // 因为使用了 keep-alive组件
+    // 这是 全局事件 需要 解绑
     window.addEventListener("scroll", this.handleScroll);
+  },
+  // 就在这里解绑！！！！！！！！！！！必须解绑
+  deactivated: function() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>

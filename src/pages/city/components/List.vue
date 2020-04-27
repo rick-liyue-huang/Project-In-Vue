@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) of cities" :key="key">
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{ key }}</div>
         <div class="item-list">
           <div
@@ -42,11 +42,23 @@ export default {
   name: "CityList",
   props: {
     hotCs: Array,
-    cities: Object
+    cities: Object,
+    letter: String
   },
   mounted: function() {
     // 使用 better-scroll 可以实现上下拉动， 但是需要设置 overflow:hidden
     this.scroll = new Bscroll(this.$refs.wrapper);
+  },
+  watch: {
+    letter: function() {
+      // console.log(this.letter);
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        // console.log(element);
+        // 这是better-scroll自带的方法
+        this.scroll.scrollToElement(element);
+      }
+    }
   }
 };
 </script>

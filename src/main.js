@@ -2,7 +2,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
-import fastClick from "fastclick";
+
+// 针对新版 浏览器 不需要 fastclick, 取而代之的是 touch-action: manipulation; in html css
+// import fastClick from "fastclick";
 // 全局引入 swiper 库
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import store from "./store"; // 引入 store from vuex
@@ -18,7 +20,7 @@ import "@/assets/styles/iconfont.css";
 
 Vue.config.productionTip = false;
 // 引入 fastclick 解决 移动端 点击 事件 延迟 300ms问题
-fastClick.attach(document.body);
+// fastClick.attach(document.body);
 // 全局使用 swiper插件
 Vue.use(VueAwesomeSwiper);
 

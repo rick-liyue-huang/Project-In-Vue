@@ -89,7 +89,10 @@ export default {
   },
   mounted: function() {
     // 使用 better-scroll 可以实现上下拉动， 但是需要设置 overflow:hidden
-    this.scroll = new Bscroll(this.$refs.wrapper);
+    // 让列表中的城市可以点击
+    this.scroll = new Bscroll(this.$refs.wrapper, {
+      click: true
+    });
   }
 };
 </script>

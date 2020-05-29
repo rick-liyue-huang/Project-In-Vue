@@ -3,12 +3,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 
-// 针对新版 浏览器 不需要 fastclick, 取而代之的是 touch-action: manipulation; in html css
-// import fastClick from "fastclick";
-// 全局引入 swiper 库
-import VueAwesomeSwiper from "vue-awesome-swiper";
-// 兼容有些浏览器不支持promise
-import "babel-polyfill";
 import App from "./App";
 import router from "./router";
 // 引入全局默认样式
@@ -18,9 +12,16 @@ import "./assets/styles/border.css";
 // 在主目录引入iconfont
 import "./assets/styles/iconfont.css";
 // 解决移动端300ms点击延迟
+// 针对新版 浏览器 不需要 fastclick, 取而代之的是 touch-action: manipulation; in html css
 import fastClick from "fastclick";
+// 引入 swiper
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import "swiper/dist/css/swiper.css";
+
 // 使用fastClick，让其在body上应用
 fastClick.attach(document.body);
+// 使用这个插件
+Vue.use(VueAwesomeSwiper);
 
 Vue.config.productionTip = false;
 

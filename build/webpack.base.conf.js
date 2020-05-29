@@ -36,8 +36,10 @@ module.exports = {
     extensions: [".js", ".vue", ".json"],
     alias: {
       vue$: "vue/dist/vue.esm.js",
-      "@": resolve("src")
+      // 加入别名
       // "styles": resolve("src/assets/styles"),
+      "@": resolve("src")
+
       // 'common': resolve('src/common')
     }
   },

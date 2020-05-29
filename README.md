@@ -35,3 +35,7 @@ assetsPublicPath: "/project1"
 异步加载 处理 router/index.js
 根据文件大小 需要平衡
 `component: () => import("@/pages/home/Home")`
+
+这个项目使用 stylus
+所以需要下载 stylus stylus-loader
+另外需要在 settings.json 中配置 stylus

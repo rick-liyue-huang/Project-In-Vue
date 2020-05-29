@@ -15,6 +15,8 @@ import router from "./router";
 import "./assets/styles/reset.css";
 // 在2倍屏幕或者4倍屏幕，处理1像素边框会被显示为多像素的问题,
 import "./assets/styles/border.css";
+// 在主目录引入iconfont
+import "./assets/styles/iconfont.css";
 // 解决移动端300ms点击延迟
 import fastClick from "fastclick";
 // 使用fastClick，让其在body上应用

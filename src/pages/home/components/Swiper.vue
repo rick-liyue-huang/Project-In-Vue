@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <!-- 在 main.js中引入了swiper因此这里可以使用 -->
-    <swiper :options="swiperOption">
+    <!-- 在 main.js中引入了swiper因此这里可以使用 list是空数组的时候不会创建，只有数据过来后才会显示 -->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
       <swiper-slide v-for="item of swiperList" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl" alt="" />
@@ -15,13 +15,17 @@
 <script>
 export default {
   name: "HomeSwiper",
+  props: {
+    swiperList: Array
+  },
   data() {
     return {
       swiperOption: {
         // 这些选项都是swiper自带的
         pagination: ".swiper-pagination",
         loop: true
-      },
+      }
+      /*
       swiperList: [
         {
           id: "0001",
@@ -39,7 +43,13 @@ export default {
             "http://img1.qunarzz.com/sight/p0/2005/30/307fa37039eab5cba3.water.jpg_600x330_8db87481.jpg"
         }
       ]
+      */
     };
+  },
+  computed: {
+    showSwiper() {
+      return this.swiperList.length;
+    }
   }
 };
 </script>

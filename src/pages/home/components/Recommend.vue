@@ -23,8 +23,12 @@
 <script>
 export default {
   name: "HomeRecommend",
+  props: {
+    recommendList: Array
+  },
   data() {
     return {
+      /*
       recommendList: [
         {
           id: "0001",
@@ -48,6 +52,7 @@ export default {
           desc: "Description"
         }
       ]
+      */
     };
   }
 };

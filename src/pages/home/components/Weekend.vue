@@ -4,7 +4,7 @@
     <ul>
       <li
         class="weekend-item border-bottom"
-        v-for="item of recommendList"
+        v-for="item of weekendList"
         :key="item.id"
       >
         <div class="item-img-wrapper">
@@ -22,9 +22,13 @@
 <script>
 export default {
   name: "HomeWeekend",
+  props: {
+    weekendList: Array
+  },
   data() {
     return {
-      recommendList: [
+      /*
+      weekendList: [
         {
           id: "0001",
           imgUrl:
@@ -40,6 +44,7 @@ export default {
           desc: "Description"
         }
       ]
+      */
     };
   }
 };
@@ -52,11 +57,10 @@ export default {
   line-height: .8rem
   background: #eee
   text-indent: .2rem
-  margin-top: .2rem
 .weekend-img-wrapper
   height: 0
   overflow: hidden
-  padding-bottom: 33.9%
+  padding-bottom: 37.09%
 .item-img
   width: 100%
 .item-info

@@ -7,7 +7,7 @@
       <span class="iconfont">&#xe632;</span> input city
     </div>
     <div class="header-right">
-      city
+      {{ this.city }}
       <span class="iconfont arrow-icon">&#xe6aa;</span>
     </div>
   </div>
@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
+  props: {
+    city: String
+  }
 };
 // 1rem = html font-size = 50px
 // 将一些公用样式导出去

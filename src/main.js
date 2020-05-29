@@ -7,24 +7,20 @@ import Vue from "vue";
 // import fastClick from "fastclick";
 // 全局引入 swiper 库
 import VueAwesomeSwiper from "vue-awesome-swiper";
-import store from "./store"; // 引入 store from vuex
 // 兼容有些浏览器不支持promise
 import "babel-polyfill";
 import App from "./App";
 import router from "./router";
-// 在入口文件引入 全局css 样式
-import "@/assets/styles/reset.css";
-// 手机 1像素边框问题
-import "@/assets/styles/border.css";
-import "swiper/dist/css/swiper.css";
-// iconfont 引入
-import "@/assets/styles/iconfont.css";
+// 引入全局默认样式
+import "./assets/styles/reset.css";
+// 在2倍屏幕或者4倍屏幕，处理1像素边框会被显示为多像素的问题,
+import "./assets/styles/border.css";
+// 解决移动端300ms点击延迟
+import fastClick from "fastclick";
+// 使用fastClick，让其在body上应用
+fastClick.attach(document.body);
 
 Vue.config.productionTip = false;
-// 引入 fastclick 解决 移动端 点击 事件 延迟 300ms问题
-// fastClick.attach(document.body);
-// 全局使用 swiper插件
-Vue.use(VueAwesomeSwiper);
 
 /* eslint-disable no-new */
 // 定义了子组件 App 需要在这里配置
@@ -32,8 +28,7 @@ new Vue({
   // 对应 index.html 挂载点
   el: "#app",
   router, // 使用了 router，相当于注册
-  store, // 使用 store
-  components: { App },
+  components: { App }, // 这是局部组件
   template: "<App/>"
 });
 
@@ -43,6 +38,6 @@ new Vue({
 // 优点: 首屏时间快， SEO 效果好
 // 缺点：页面切换慢
 
-// 单页应用 页面跳转 js 渲染， 可以在前端解决
+// 单页应用 页面跳转 利用js 挂在不同的页面在前端渲染， 可以在前端解决
 // 优点： 页面跳转块
 // 缺点：首屏时间慢， SEO差

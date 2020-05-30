@@ -21,17 +21,21 @@ export default {
       opacityStyle: 0
     };
   },
-  activated() {
+  mounted() {
     // 需要对 全局事件 解绑
     window.addEventListener("scroll", this.handleScroll);
   },
   // 解绑 全局事件
-  deactivated() {
+  destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {
-      const top = document.documentElement.scrollTop;
+      // 手机兼容性
+      const top =
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        window.pageYOffset;
       if (top > 60) {
         let opacity = top / 140;
         opacity = opacity > 1 ? 1 : opacity;

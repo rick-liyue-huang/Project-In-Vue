@@ -22,7 +22,12 @@ export default {
     };
   },
   activated() {
+    // 需要对 全局事件 解绑
     window.addEventListener("scroll", this.handleScroll);
+  },
+  // 解绑 全局事件
+  deactivated() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {

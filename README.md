@@ -39,3 +39,17 @@ assetsPublicPath: "/project1"
 这个项目使用 stylus
 所以需要下载 stylus stylus-loader
 另外需要在 settings.json 中配置 stylus
+
+```
+    "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
+
+```
+
+使得可以通过 ip 地址来访问，这样手机也可以使用该 ip 地址
+
+在 config/index.js 打包后的文件放入到 mamp 的 project1 中
+
+```
+// 将打包文件放入到 project1文件夹里面
+    assetsPublicPath: "/project1",
+```

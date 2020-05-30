@@ -16,11 +16,11 @@ module.exports = {
     proxyTable: {
       "/api": {
         // target: "http://localhost:8080",
-        target: "http://localhost:8080",
-        pathRewrite: {
-          "^/api": "/static/mock"
-          // "^/api": "/api"
-        }
+        target: "http://localhost:8888" // 有时候需要用到具体的ip地址
+        // pathRewrite: {
+        //   "^/api": "/static/mock"
+        //   // "^/api": "/api"
+        // }
       }
     },
 

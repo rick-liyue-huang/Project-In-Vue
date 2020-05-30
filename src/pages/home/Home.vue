@@ -10,6 +10,7 @@
 
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 import HomeHeader from "./components/Header";
 import HomeSwiper from "./components/Swiper";
 import HomeIcons from "./components/Icons";
@@ -31,13 +32,20 @@ export default {
       swiperList: [],
       iconList: [],
       recommendList: [],
-      weekendList: []
+      weekendList: [],
+      lastCity: "" // 判断上一次的城市
     };
+  },
+  computed: {
+    // 得到 vuex的计算属性
+    ...mapState(["city"])
   },
   methods: {
     getHomeInfo() {
       // 在config/index.js中进行了配置
-      axios.get("/api/index.json").then(this.getHomeInfoSuccess);
+      axios
+        .get("/api/index.json?city=" + this.city)
+        .then(this.getHomeInfoSuccess);
     },
     getHomeInfoSuccess(res) {
       // console.log(res);
@@ -54,6 +62,17 @@ export default {
   },
   mounted() {
     this.getHomeInfo();
+    // console.log("mounted");
+    this.lastCity = this.city;
+  },
+
+  // keep-alive 组件应用的时候就使用这个方法, 并且使用 lastCity 的临时缓冲变量
+  activated() {
+    // console.log("activated");
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city;
+      this.getHomeInfo();
+    }
   }
 };
 </script>

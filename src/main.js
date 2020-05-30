@@ -5,6 +5,9 @@ import Vue from "vue";
 
 import App from "./App";
 import router from "./router";
+// 引入 vuex
+import store from "./store";
+
 // 引入全局默认样式
 import "./assets/styles/reset.css";
 // 在2倍屏幕或者4倍屏幕，处理1像素边框会被显示为多像素的问题,
@@ -31,6 +34,7 @@ new Vue({
   // 对应 index.html 挂载点
   el: "#app",
   router, // 使用了 router，相当于注册
+  store, // 注册 store ,其他的子组件都可以使用
   components: { App }, // 这是局部组件
   template: "<App/>"
 });

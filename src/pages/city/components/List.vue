@@ -6,14 +6,19 @@
         <div class="title border-topbottom">current city</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">Melbourne</div>
+            <div class="button">{{ this.$store.state.city }}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">Hot city</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <div
+            class="button-wrapper"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >
             <div class="button">{{ item.name }}</div>
           </div>
         </div>
@@ -25,6 +30,7 @@
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)"
           >{{ innerItem.name }}</div>
         </div>
       </div>
@@ -53,6 +59,15 @@ export default {
         const ele = this.$refs[this.letter][0]; // 这是数组
         this.scroll.scrollToElement(ele);
       }
+    }
+  },
+  methods: {
+    handleCityClick(city) {
+      // alert(city);
+      // 调用 vuex actions
+      // this.$store.dispatch("changeCity", city);
+      this.$store.commit("changeCity", city);
+      this.$router.push("/");
     }
   }
 };

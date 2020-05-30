@@ -9,6 +9,7 @@
           class="search-item border-bottom"
           v-for="(item, index) of list"
           :key="index"
+          @click="handleCityClick(item.name)"
         >{{ item.name }}</li>
         <li class="search-item border-bottom" v-show="hasNoData">on matched cites</li>
       </ul>
@@ -58,6 +59,15 @@ export default {
         }
         this.list = result;
       }, 200);
+    }
+  },
+  methods: {
+    handleCityClick(city) {
+      // 调用 vuex actions
+      // this.$store.dispatch("changeCity", city);
+      this.$store.commit("changeCity", city);
+      // 页面跳转
+      this.$router.push("/");
     }
   },
   mounted() {

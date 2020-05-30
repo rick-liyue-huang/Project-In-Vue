@@ -1,13 +1,16 @@
 //  vuex
 import Vue from "vue";
 import Vuex from "vuex";
+import state from "./state";
+import mutations from "./mutations";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    city: "Mel"
-  },
+  state: state,
+  // state: {
+  //   city: defaultCity
+  // },
 
   //this.$store.dispatch("changeCity", city);
   // -> ctx.commit("changeCity", city);
@@ -19,9 +22,12 @@ export default new Vuex.Store({
   //     ctx.commit("changeCity", city);
   //   }
   // },
-  mutations: {
-    changeCity(state, city) {
-      state.city = city;
+  mutations: mutations,
+
+  // 类似于组件中的computed
+  getters: {
+    doubleCity(state) {
+      return state.city + " " + state.city;
     }
   }
 });

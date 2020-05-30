@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 import BScroll from "better-scroll";
 export default {
   name: "CitySearch",
@@ -63,12 +64,14 @@ export default {
   },
   methods: {
     handleCityClick(city) {
+      // alert(city);
       // 调用 vuex actions
       // this.$store.dispatch("changeCity", city);
-      this.$store.commit("changeCity", city);
-      // 页面跳转
+      // this.$store.commit("changeCity", city);
+      this.changeCity(city); // 因为使用了 mapMutations
       this.$router.push("/");
-    }
+    },
+    ...mapMutations(["changeCity"])
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.search);

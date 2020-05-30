@@ -2,20 +2,23 @@
   <div>
     <div class="recommend-title">Recommend</div>
     <ul>
-      <li
+      <router-link
+        tag="li"
         class="recommend-item border-bottom"
         v-for="item of recommendList"
         :key="item.id"
+        :to="'/detail/' + item.id"
       >
+        <!-- :to="'/detail' + item.id" 动态绑定 -->
         <div class="item-img-wrapper">
-          <img class="item-img" :src="item.imgUrl" alt="" />
+          <img class="item-img" :src="item.imgUrl" alt />
         </div>
         <div class="item-info">
           <p class="item-title">{{ item.title }}</p>
           <p class="item-desc">{{ item.desc }}</p>
           <button class="item-button">Detail</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -62,10 +65,10 @@ export default {
 /* min-width: 0 */
 @import '~@/assets/styles/mixins.styl'
 .recommend-title
-  line-height: .8rem
+  line-height: 0.8rem
   background: #eee
-  text-indent: .2rem
-  margin-top: .2rem
+  text-indent: 0.2rem
+  margin-top: 0.2rem
 .recommend-item
   display: flex
   height: 1.9rem
@@ -73,26 +76,26 @@ export default {
   .item-img
     width: 1.7rem
     height: 1.7rem
-    padding: .1rem
+    padding: 0.1rem
   .item-info
     flex: 1
-    padding: .1rem
+    padding: 0.1rem
     min-width: 0
     .item-title
-      line-height: .54rem
-      font-size: .32rem
+      line-height: 0.54rem
+      font-size: 0.32rem
       ellipsis()
     .item-desc
-      line-height: .4rem
-      font-size: .28rem
+      line-height: 0.4rem
+      font-size: 0.28rem
       color: #ccc
       ellipsis()
     .item-button
       background: #ff9300
-      padding: 0 .1rem
-      border-radius: .06rem
-      margin-top: .2rem
-      line-height: .44rem
-      margin-top: .16rem
+      padding: 0 0.1rem
+      border-radius: 0.06rem
+      margin-top: 0.2rem
+      line-height: 0.44rem
+      margin-top: 0.16rem
       color: #fff
 </style>

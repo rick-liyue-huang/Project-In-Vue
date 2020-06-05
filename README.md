@@ -53,3 +53,5 @@ assetsPublicPath: "/project1"
 // 将打包文件放入到 project1文件夹里面
     assetsPublicPath: "/project1",
 ```
+
+try latter
